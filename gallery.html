@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Аксиома</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" media="all" href="static/css/style.css">
+  </head>
+  <body class="is-disabled">
+    <div class="wrapper" id="app" ref="body">
+      <transition name="fade">
+        <div class="preload" v-if="loading">
+          <div class="preload__img-wrapper"><img src="./static/img/rings.svg">
+          </div>
+        </div>
+      </transition>
+      <header-component></header-component>
+      <div class="main">
+        <gallery-root-component></gallery-root-component>
+      </div>
+      <footer-component></footer-component>
+    </div>
+    <script type="text/x-template" id="gallery">
+      <div class="gallery-wrapper">
+        <div class="breadcrumb container">
+          <ul class="breadcrumb__list">
+            <li class="breadcrumb__item"><a class="breadcrumb__link" href="gallery.html">Галерея</a>
+            </li>
+          </ul>
+        </div>
+        <div class="content container">
+          <div class="gallery-row">
+            <gallery-item :elementData="{&quot;title&quot;:&quot;жизнь жилого комплекса&quot;,&quot;img&quot;:&quot;./static/img/gallery-0.png&quot;,&quot;slides&quot;:[&quot;./static/img/IMG_0937.jpg&quot;,&quot;./static/img/IMG_0949.jpg&quot;,&quot;./static/img/IMG_0989.jpg&quot;,&quot;./static/img/IMG_1064.jpg&quot;,&quot;./static/img/IMG_1100.jpg&quot;,&quot;./static/img/IMG_1161.jpg&quot;,&quot;./static/img/IMG_1216.jpg&quot;,&quot;./static/img/IMG_1237.jpg&quot;]}"></gallery-item>
+            <gallery-item :elementData="{&quot;title&quot;:&quot;отделка квартир&quot;,&quot;img&quot;:&quot;./static/img/gallery-1.png&quot;,&quot;slides&quot;:[&quot;./static/img/cosmetic.jpg&quot;]}"></gallery-item>
+            <gallery-item :elementData="{&quot;title&quot;:&quot;мероприятия&quot;,&quot;img&quot;:&quot;./static/img/gallery-2.png&quot;,&quot;slides&quot;:[]}"></gallery-item>
+            <gallery-item :elementData="{&quot;title&quot;:&quot;видео&quot;,&quot;img&quot;:&quot;./static/img/gallery-3.png&quot;,&quot;video&quot;:&quot;./static/video/v3.mp4&quot;}"></gallery-item>
+          </div>
+          <div class="content__actions"><a class="content__btn content__btn--order" href="">записаться на показ</a><a class="content__btn content__btn--select" href="">выбрать квартиру</a>
+          </div>
+        </div>
+      </div>
+    </script>
+    <script type="text/x-template" id="gallery-item">
+      <div class="gallery-thumb">
+        <div class="gallery-thumb__mask" @click="triggerShow()">
+        </div><a class="gallery-thumb__bg magnific-gallery" v-if="elementData.slides" :style="{'background-image':'url('+elementData.img+')'}"></a>
+        <div class="gallery-thumb__bg" v-else="v-else" :style="{'background-image':'url('+elementData.img+')'}">
+        </div>
+        <h2 class="gallery-thumb__text">[[elementData.title]]
+        </h2>
+        <transition name="fade">
+          <gallery-slides-component v-show="elementData.slides" :slides="elementData.slides" :isVisible="showPopup" @close="showPopup = false"></gallery-slides-component>
+        </transition>
+        <transition name="fade">
+          <gallery-video-component v-if="elementData.video" :src="elementData.video" :isVisible="showPopup" @close="showPopup = false"></gallery-video-component>
+        </transition>
+      </div>
+    </script>
+    <script type="text/x-template" id="gallery-slides-component">
+      <div class="overlay" v-if="isVisible">
+        <slick class="gallery-swiper" ref="slick" :options="slickOptions"><img class="gallery-swiper__img" v-for="slide in slides" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" :src="slide" alt="" role="presentation"/>
+        </slick><i class="overlay__icon icon-gallery icon-gallery--left" @click="prev()" ref="prev"></i><i class="overlay__icon icon-gallery icon-gallery--right" @click="next()" ref="next"></i>
+        <div class="overlay__close" @click="emitClose()"><img src="./static/img/close.svg">
+        </div>
+      </div>
+    </script>
+    <script type="text/x-template" id="gallery-video-component">
+      <div class="overlay" v-if="isVisible">
+        <div class="gallery gallery--video">
+          <div class="gallery__close" @click="emitClose()"><img src="./static/img/close.svg">
+          </div><img class="gallery__play-mask" src="./static/img/play-btn.png" @click.stop.prevent="play()" v-if="isHidden" alt="" role="presentation"/>
+          <video class="gallery__main-video" loop="loop" muted="muted" id="video" :src="src" ref="video" @click="stop()">
+          </video>
+        </div>
+      </div>
+    </script>
+    <script type="text/x-template" id="header">
+      <div class="header-wrapper">
+        <div class="header clearfix"><a class="header__logo-wrapper" href="index.html"><img class="header__logo" src="./static/img/logo.png" alt="" role="presentation"/></a>
+          <div class="aside">
+            <div class="info">
+              <div class="info__part">
+                <div class="info__item"><i class="icon-pin"></i>г. Астана, ул. А 98 1
+                </div>
+                <div class="info__item"><i class="icon-email"></i>info@axiomadom.kz
+                </div>
+              </div>
+              <div class="info__part">
+                <div class="info__item"><i class="icon-time"></i>Пн - Пт: 9.00 - 19.00
+                </div>
+                <div class="info__item"><i class="icon-time"></i>Сб - Вс: 10.00 - 17.00
+                </div>
+              </div>
+              <div class="book clearfix">
+                <div class="book__tel"><i class="icon-call"></i>+7 71 72 450 800
+                </div><a class="book__callback">заказать звонок</a>
+              </div>
+            </div>
+            <div class="aside__nav-wrapper"><a class="aside__toggle" @click.prevent="toggleActive = !toggleActive" :class="{&quot;is-active&quot;: toggleActive}"><i class="icon-menu-toggle"></i></a>
+              <div class="aside__nav" :class="{&quot;is-active&quot;:toggleActive}"><a class="aside__link" href="about.html" v-if="getWidth &gt;= 1200 || toggleActive">О проекте</a><a class="aside__link is-active" href="plan.html" v-if="getWidth &gt;= 1200 || toggleActive">Выбрать квартиру</a><a class="aside__link" href="conditions.html" v-if="getWidth &gt;= 1200 || toggleActive">Условия приобретения </a><a class="aside__link" href="gallery.html" v-if="getWidth &gt;= 1200 || toggleActive">Галерея</a><a class="aside__link" href="contacts.html" v-if="getWidth &gt;= 1200 || toggleActive">Контакты</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </script>
+    <script type="text/x-template" id="footer-component">
+      <div class="footer clearfix container">
+        <div class="contacts">
+          <div class="contacts__contact"><span> <i class="icon-call"></i></span>+7 7172 450 600
+          </div>
+          <div class="contacts__contact"><span> <i class="icon-pin"></i></span>г. Астана, ул. А 98 1
+          </div>
+          <div class="contacts__contact"><span> <i class="icon-email"></i></span>info@axiomadom.kz
+          </div>
+        </div>
+        <div class="socials"><a class="socials__link" href="https://www.facebook.com/axioma.dom/?fref=ts" target="_blank"><i class="icon-f"></i></a><a class="socials__link" href="" target="_blank"><i class="icon-vk"></i></a><a class="socials__link" href="https://www.instagram.com/axioma.dom/" target="_blank"><i class="icon-insta"></i></a>
+        </div>
+        <div class="developers">
+          <div class="developers__developers"> <span>Сайт разработан</span><a href="" target="_blank"><img class="icon-reactor" src="./static/img/reactor.png"></a>
+          </div>
+        </div>
+      </div>
+    </script>
+    <script src="static/js/app.js"></script>
+  </body>
+</html>

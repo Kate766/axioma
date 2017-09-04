@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Аксиома</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" media="all" href="static/css/style.css">
+  </head>
+  <body class="is-disabled">
+    <div class="wrapper" id="app" ref="body">
+      <transition name="fade">
+        <div class="preload" v-if="loading">
+          <div class="preload__img-wrapper"><img src="./static/img/rings.svg">
+          </div>
+        </div>
+      </transition>
+      <header-component></header-component>
+      <div class="main">
+        <contact-root-component></contact-root-component>
+      </div>
+      <footer-component></footer-component>
+    </div>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <script type="text/x-template" id="contact-root-component">
+      <div class="contacts-wrapper">
+        <div class="breadcrumb container">
+          <ul class="breadcrumb__list">
+            <li class="breadcrumb__item"><a class="breadcrumb__link" href="contacts.html">Контакты</a>
+            </li>
+          </ul>
+        </div>
+        <div class="content container">
+          <div class="contacts-row">
+            <div class="contact-item contact-item--marketing"> 
+              <h2>отдел продаж жк “аксиома”</h2>
+              <div class="contact-item__item"><i class="icon-pin"></i><span>г. Астана, ул. А 98 1</span>
+              </div>
+              <div class="contact-item__item"><i class="icon-call"></i><span>+7 71 72 450 800</span>
+              </div>
+              <div class="contact-item__item"><i class="icon-email"></i><span>info@axiomadom.kz <br></span>
+              </div>
+              <div class="contact-item__item"><i class="icon-time"></i><span>Пн - Пт: 9.00 - 19.00 <br></span><span>Сб - Вс: 10.00 - 17.00 <br></span>
+              </div>
+            </div>
+            <div class="contact-item contact-item--location">
+              <h2>как нас найти</h2>
+              <div class="map-container" id="map1" data-center="51.125143, 71.492036"></div>
+            </div>
+            <div class="contact-item contact-item--form">
+              <h2>связаться с нами </h2>
+              <form class="form" @submit.prevent="validateBeforeSubmit" novalidate="novalidate" method="POST" enctype="application/x-www-form-urlencoded">
+                <div class="form__form-control"><input class="form__input" type="text" placeholder="Ваше имя" v-model="name" v-validate="'required|alpha_spaces'" :class="{'invalid': errors.has('name')}" name="name"/>
+                </div>
+                <div class="form__form-control"><input class="form__input" type="tel" placeholder="Ваш телефон" name="tel" v-mask="'+7-####-###-###'" v-validate="'max:15|min:15|required'" v-model="tel" :class="{'invalid': errors.has('tel')}"/>
+                </div>
+                <div class="form__form-control"><input class="form__input" placeholder="Ваш e-mail" type="text" v-validate="'required|email'" name="email" v-model="email" :class="{'invalid': errors.has('email')}"/>
+                </div>
+                <div class="form__form-control"><textarea class="form__input form__input--textarea" type="text" v-validate="'required'" name="message" v-model="message" :class="{'invalid': errors.has('message')}" placeholder="Текст сообщения"></textarea>
+                </div>
+                <div class="form__form-control"><input class="form__action form__action--submit" type="submit" value="отправить"/>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <transition name="fade">
+          <div class="popup-mask" v-if="showPopup">
+            <div class="popup">
+              <h2 class="popup__title">Спасибо!
+              </h2>
+              <p class="popup__message">Ближайшее время с Вами свяжется наш менеджер.
+              </p>
+            </div>
+          </div>
+        </transition>
+      </div>
+    </script>
+    <script type="text/x-template" id="header">
+      <div class="header-wrapper">
+        <div class="header clearfix"><a class="header__logo-wrapper" href="index.html"><img class="header__logo" src="./static/img/logo.png" alt="" role="presentation"/></a>
+          <div class="aside">
+            <div class="info">
+              <div class="info__part">
+                <div class="info__item"><i class="icon-pin"></i>г. Астана, ул. А 98 1
+                </div>
+                <div class="info__item"><i class="icon-email"></i>info@axiomadom.kz
+                </div>
+              </div>
+              <div class="info__part">
+                <div class="info__item"><i class="icon-time"></i>Пн - Пт: 9.00 - 19.00
+                </div>
+                <div class="info__item"><i class="icon-time"></i>Сб - Вс: 10.00 - 17.00
+                </div>
+              </div>
+              <div class="book clearfix">
+                <div class="book__tel"><i class="icon-call"></i>+7 71 72 450 800
+                </div><a class="book__callback">заказать звонок</a>
+              </div>
+            </div>
+            <div class="aside__nav-wrapper"><a class="aside__toggle" @click.prevent="toggleActive = !toggleActive" :class="{&quot;is-active&quot;: toggleActive}"><i class="icon-menu-toggle"></i></a>
+              <div class="aside__nav" :class="{&quot;is-active&quot;:toggleActive}"><a class="aside__link" href="about.html" v-if="getWidth &gt;= 1200 || toggleActive">О проекте</a><a class="aside__link is-active" href="plan.html" v-if="getWidth &gt;= 1200 || toggleActive">Выбрать квартиру</a><a class="aside__link" href="conditions.html" v-if="getWidth &gt;= 1200 || toggleActive">Условия приобретения </a><a class="aside__link" href="gallery.html" v-if="getWidth &gt;= 1200 || toggleActive">Галерея</a><a class="aside__link" href="contacts.html" v-if="getWidth &gt;= 1200 || toggleActive">Контакты</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </script>
+    <script type="text/x-template" id="footer-component">
+      <div class="footer clearfix container">
+        <div class="contacts">
+          <div class="contacts__contact"><span> <i class="icon-call"></i></span>+7 7172 450 600
+          </div>
+          <div class="contacts__contact"><span> <i class="icon-pin"></i></span>г. Астана, ул. А 98 1
+          </div>
+          <div class="contacts__contact"><span> <i class="icon-email"></i></span>info@axiomadom.kz
+          </div>
+        </div>
+        <div class="socials"><a class="socials__link" href="https://www.facebook.com/axioma.dom/?fref=ts" target="_blank"><i class="icon-f"></i></a><a class="socials__link" href="" target="_blank"><i class="icon-vk"></i></a><a class="socials__link" href="https://www.instagram.com/axioma.dom/" target="_blank"><i class="icon-insta"></i></a>
+        </div>
+        <div class="developers">
+          <div class="developers__developers"> <span>Сайт разработан</span><a href="" target="_blank"><img class="icon-reactor" src="./static/img/reactor.png"></a>
+          </div>
+        </div>
+      </div>
+    </script>
+    <script src="static/js/app.js"></script>
+  </body>
+</html>

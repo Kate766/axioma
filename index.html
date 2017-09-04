@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Аксиома</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" media="all" href="static/css/style.css">
+  </head>
+  <body class="is-disabled">
+    <div class="wrapper" id="app" ref="body">
+      <transition name="fade">
+        <div class="preload" v-if="loading">
+          <div class="preload__img-wrapper"><img src="./static/img/rings.svg">
+          </div>
+        </div>
+      </transition>
+      <header-component></header-component>
+      <div class="main">
+        <index-component></index-component>
+      </div>
+      <footer-component></footer-component>
+    </div>
+    <script type="x/templates" id="index">
+      <div class="index-swiper swiper-container">
+        <div class="index-swiper__swiper-wrapper swiper-wrapper">
+          <div class="swiper-slide swiper-slide--index swiper-slide" style="background-image:url(./static/img/index-slide-0.png);">
+            <div class="mask"></div>
+            <div class="swiper-slide__text-wrapper container clearfix">
+              <div class="swiper-slide__part swiper-slide__part--left">
+                <h1>ГОСУДАРСТВЕННАЯ ИПОТЕКА 10%</h1><a class="link--calc" href=""><i class="icon-calc"></i>сделать расчет по ипотеке</a>
+              </div>
+              <div class="swiper-slide__part swiper-slide__part--right">
+                <ul> 
+                  <li>без подтверждения доходов</li>
+                  <li>без первоначального взноса</li>
+                  <li>государственная ипотека 10%</li>
+                </ul><a href=""> <i class="icon-appartment"></i><span>выбрать квартиру <br> по параметрам</span></a>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide swiper-slide--index swiper-slide" style="background-image:url(./static/img/index-slide-1.png);">
+            <div class="mask"></div>
+            <div class="swiper-slide__text-wrapper container clearfix">
+              <div class="swiper-slide__part swiper-slide__part--left">
+                <h1>ЕЖЕМЕСЯЧНЫЙ ПЛАТЕЖ ОТ 95 000 ТЕНГЕ</h1><a class="link--calc" href=""><i class="icon-calc"></i>сделать расчет платежа</a>
+              </div>
+              <div class="swiper-slide__part swiper-slide__part--right">
+                <ul> 
+                  <li>без подтверждения доходов</li>
+                  <li>без первоначального взноса</li>
+                  <li>государственная ипотека 10%</li>
+                </ul><a href=""> <i class="icon-appartment"></i><span>выбрать квартиру <br> по параметрам</span></a>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide swiper-slide--index swiper-slide" style="background-image:url(./static/img/index-slide-2.png);">
+            <div class="mask"></div>
+            <div class="swiper-slide__text-wrapper container clearfix">
+              <div class="swiper-slide__part swiper-slide__part--left">
+                <h1>ИПОТЕКА БЕЗ ПОДТВЕРЖДЕНИЯ ДОХОДА</h1><a class="link--calc" href=""><i class="icon-calc"></i>ипотечный калькулятор</a>
+              </div>
+              <div class="swiper-slide__part swiper-slide__part--right">
+                <ul> 
+                  <li>без подтверждения доходов</li>
+                  <li>без первоначального взноса</li>
+                  <li>государственная ипотека 10%</li>
+                </ul><a href=""> <i class="icon-appartment"></i><span>выбрать квартиру <br> по параметрам</span></a>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide swiper-slide--index swiper-slide" style="background-image:url(./static/img/index-slide-3.jpg);">
+            <div class="mask"></div>
+            <div class="swiper-slide__text-wrapper container clearfix">
+              <div class="swiper-slide__part swiper-slide__part--left">
+                <h1>ЖИЛОЙ КОМПЛЕКС С СОБСТВЕННЫМ ПАРКОМ</h1><a class="link--calc" href="">Узнать подробнее</a>
+              </div>
+              <div class="swiper-slide__part swiper-slide__part--right">
+                <ul> 
+                  <li>без подтверждения доходов</li>
+                  <li>без первоначального взноса</li>
+                  <li>государственная ипотека 10%</li>
+                </ul><a href=""> <i class="icon-appartment"></i><span>выбрать квартиру <br> по параметрам</span></a>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide swiper-slide--index swiper-slide" style="background-image:url(./static/img/index-slide-4.jpg);">
+            <div class="mask"></div>
+            <div class="swiper-slide__text-wrapper container clearfix">
+              <div class="swiper-slide__part swiper-slide__part--left">
+                <h1>ГОТОВЫЙ ДОМ! ЗАСЕЛЯЙТЕСЬ УЖЕ СЕГОДНЯ</h1><a class="link--calc" href="">Узнать стоимость квартиры</a>
+              </div>
+              <div class="swiper-slide__part swiper-slide__part--right">
+                <ul> 
+                  <li>без подтверждения доходов</li>
+                  <li>без первоначального взноса</li>
+                  <li>государственная ипотека 10%</li>
+                </ul><a href=""> <i class="icon-appartment"></i><span>выбрать квартиру <br> по параметрам</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="index-swiper__swiper-pagination swiper-pagination">
+        </div>
+      </div>
+    </script>
+    <script type="text/x-template" id="header">
+      <div class="header-wrapper">
+        <div class="header clearfix"><a class="header__logo-wrapper" href="index.html"><img class="header__logo" src="./static/img/logo.png" alt="" role="presentation"/></a>
+          <div class="aside">
+            <div class="info">
+              <div class="info__part">
+                <div class="info__item"><i class="icon-pin"></i>г. Астана, ул. А 98 1
+                </div>
+                <div class="info__item"><i class="icon-email"></i>info@axiomadom.kz
+                </div>
+              </div>
+              <div class="info__part">
+                <div class="info__item"><i class="icon-time"></i>Пн - Пт: 9.00 - 19.00
+                </div>
+                <div class="info__item"><i class="icon-time"></i>Сб - Вс: 10.00 - 17.00
+                </div>
+              </div>
+              <div class="book clearfix">
+                <div class="book__tel"><i class="icon-call"></i>+7 71 72 450 800
+                </div><a class="book__callback">заказать звонок</a>
+              </div>
+            </div>
+            <div class="aside__nav-wrapper"><a class="aside__toggle" @click.prevent="toggleActive = !toggleActive" :class="{&quot;is-active&quot;: toggleActive}"><i class="icon-menu-toggle"></i></a>
+              <div class="aside__nav" :class="{&quot;is-active&quot;:toggleActive}"><a class="aside__link" href="about.html" v-if="getWidth &gt;= 1200 || toggleActive">О проекте</a><a class="aside__link is-active" href="plan.html" v-if="getWidth &gt;= 1200 || toggleActive">Выбрать квартиру</a><a class="aside__link" href="conditions.html" v-if="getWidth &gt;= 1200 || toggleActive">Условия приобретения </a><a class="aside__link" href="gallery.html" v-if="getWidth &gt;= 1200 || toggleActive">Галерея</a><a class="aside__link" href="contacts.html" v-if="getWidth &gt;= 1200 || toggleActive">Контакты</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </script>
+    <script type="text/x-template" id="footer-component">
+      <div class="footer clearfix container">
+        <div class="contacts">
+          <div class="contacts__contact"><span> <i class="icon-call"></i></span>+7 7172 450 600
+          </div>
+          <div class="contacts__contact"><span> <i class="icon-pin"></i></span>г. Астана, ул. А 98 1
+          </div>
+          <div class="contacts__contact"><span> <i class="icon-email"></i></span>info@axiomadom.kz
+          </div>
+        </div>
+        <div class="socials"><a class="socials__link" href="https://www.facebook.com/axioma.dom/?fref=ts" target="_blank"><i class="icon-f"></i></a><a class="socials__link" href="" target="_blank"><i class="icon-vk"></i></a><a class="socials__link" href="https://www.instagram.com/axioma.dom/" target="_blank"><i class="icon-insta"></i></a>
+        </div>
+        <div class="developers">
+          <div class="developers__developers"> <span>Сайт разработан</span><a href="" target="_blank"><img class="icon-reactor" src="./static/img/reactor.png"></a>
+          </div>
+        </div>
+      </div>
+    </script>
+    <script src="static/js/app.js"></script>
+  </body>
+</html>

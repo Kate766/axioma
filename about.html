@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Аксиома</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" media="all" href="static/css/style.css">
+  </head>
+  <body class="is-disabled">
+    <div class="wrapper" id="app" ref="body">
+      <transition name="fade">
+        <div class="preload" v-if="loading">
+          <div class="preload__img-wrapper"><img src="./static/img/rings.svg">
+          </div>
+        </div>
+      </transition>
+      <header-component></header-component>
+      <div class="main">
+        <about-root-component></about-root-component>
+      </div>
+      <footer-component></footer-component>
+    </div>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <script type="text/x-template" id="about">
+      <div>
+        <div class="about-mask">
+        </div>
+        <div class="about-wrapper">
+          <div class="breadcrumb container">
+            <ul class="breadcrumb__list">
+              <li class="breadcrumb__item"><a class="breadcrumb__link" href="about.html">о проекте</a>
+              </li>
+              <li class="breadcrumb__item breadcrumb__item--devider">/
+              </li>
+              <li class="breadcrumb__item"><span class="breadcrumb__link breadcrumb__link--current" ref="link">[[ title ]]</span>
+              </li>
+            </ul>
+          </div>
+          <div class="content container">
+            <tabs-component @sendBreadcrumb="title=$event"></tabs-component>
+          </div>
+        </div>
+      </div>
+    </script>
+    <script type="text/x-template" id="tabs">
+      <div class="clearfix main-swiper-wrapper">
+        <div class="about-swiper-pagination" @click="emitEvent($event)">
+        </div>
+        <div class="about-swiper-container swiper-container">
+          <div class="about-swiper-container__swiper-wrapper swiper-wrapper"> 
+            <div class="about-swiper-container__swiper-slide swiper-slide">
+              <about-slide-component>
+                <div class="swiper-slide swiper-slide" slot="1">
+                  <div class="slide-card">
+                    <h1>Что такое «Аксиома»?</h1>
+                    <p>Аксиомой называют утверждение, которое не требует доказательств. Наш жилой комплекс получил такое название, потому что степень его благоустройства, качество использованных в строительстве материалов, а также выгодное расположение обеспечивают жителям комфорт, в котором невозможно сомневаться.</p>
+                    <p>Жилой комплекс «Аксиома» – это готовый дом высотой в 12 этажей, разделенный на 8 секций. Он насчитывает 294 квартиры различной планировки и площади, каждая из которых создана для максимально удобного проживания в ней.</p>
+                    <p>Дом спроектирован компанией «АрхиПросто» по концепту члена Международной Академии Архитектуры Гладких В. А. Cтроительство осуществляла казахстанско-немецкая компания «BAUMASTER», при консультационной поддержке международной компании «KVL Consult». Заказчиком выступало предприятие ТОО «Prime Development Company», а финансирование осуществлял один из крупнейших банков страны - АО «Цеснабанк».</p>
+                    <p>Во дворе дома расположены два отдельно стоящих паркинга, большой сквер, а также полностью оборудованные детская и спортивная площадки. ЖК «Аксиома» – идеальное место для тех, кто ценит безопасность, тишину и спокойствие.</p>
+                    <div class="slide-card__actions"><a class="slide-card__btn slide-card__btn--order" href="">записаться на показ</a><a class="slide-card__btn slide-card__btn--select" href="">выбрать квартиру</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide swiper-slide" slot="2">
+                  <div class="slide-card">
+                    <h1>БЛАГОУСТРОЙСТВО</h1>
+                    <p>ЖК «Аксиома» - это не только надежный и комфортный дом, но и собственный благоустроенный сквер. Здесь можно отдыхать в тени деревьев, сидя на скамейке и любуясь цветущими клумбами, неспешно прогуливаться по мощенным дорожкам или читать любимую книгу в беседке.</p>
+                    <ol>
+                      <li>Газоны</li>
+                      <li>Ландшафтные композиции</li>
+                      <li>Лиственные и хвойные деревья</li>
+                      <li>Цветочные клумбы</li>
+                      <li>Прогулочные дорожки</li>
+                      <li>Скамейки и беседки</li>
+                    </ol>
+                    <div class="slide-card__actions"><a class="slide-card__btn slide-card__btn--order" href="">записаться на показ</a><a class="slide-card__btn slide-card__btn--select" href="">выбрать квартиру</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide swiper-slide" slot="3">
+                  <div class="slide-card">
+                    <h1>Безопасность</h1>
+                    <p>Въезд во двор ограничивается при помощи шлагбаумов и круглосуточно контролируется для беспрепятственного доступа в экстренных ситуациях. Сотрудники нашей службы безопасности также следят за безопасностью жителей жилого комплекса и всегда готовы прийти на помощь в случае необходимости.</p>
+                    <ol>
+                      <li>Тихий район</li>
+                      <li>Ночное освещение</li>
+                      <li>Собственная служба безопасности</li>
+                      <li>Система контроля въезда на территорию жилого комплекса</li>
+                      <li>Видеонаблюдение</li>
+                    </ol>
+                    <div class="slide-card__actions"><a class="slide-card__btn slide-card__btn--order" href="">записаться на показ</a><a class="slide-card__btn slide-card__btn--select" href="">выбрать квартиру</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide swiper-slide" slot="4">
+                  <div class="slide-card">
+                    <h1>Паркинг</h1>
+                    <p>Для жителей ЖК «Аксиома» построены два отдельно стоящих четырехэтажных паркинга на 364 места (по 182 в каждом). Это обеспечивает защиту автомобиля от всевозможных повреждений, атмосферных осадков, а также исключает все неудобства, связанные с поиском парковочного места по вечерам.</p>
+                    <ol>
+                      <li>Современная система вентиляции</li>
+                      <li>Видеонаблюдение</li>
+                      <li>Пожарная сигнализация</li>
+                      <li>Система пожаротушения</li>
+                      <li>Просторные места</li>
+                      <li>Удобная схема проезда</li>
+                      <li>Барьерные ограждения для удобства парковки</li>
+                    </ol>
+                    <div class="slide-card__actions"><a class="slide-card__btn slide-card__btn--order" href="">записаться на показ</a><a class="slide-card__btn slide-card__btn--select" href="">выбрать квартиру</a>
+                    </div>
+                  </div>
+                </div>
+              </about-slide-component>
+            </div>
+            <div class="about-swiper-container__swiper-slide swiper-slide">
+              <about-slide-component>
+                <div class="swiper-slide swiper-slide" slot="1">
+                  <div class="slide-card">
+                    <h1>Школы и детские сады в шаговой доступности</h1>
+                    <p>Помимо магазинов, аптек, кафе и ресторанов в районе ЖК «Аксиома» есть несколько детских садов и школ, что очень удобно для семей с детьми – родителям не потребуется много времени, чтобы отвезти своего ребенка на занятия или забрать его после школы или из детского сада.</p>
+                    <p>Детские сады: Шабыт, Жансая, Еркем-ай, ясли-сад №69, Мөлдiр, детский-сад №71, Шұғыла, детский-сад №67.</p>
+                    <p>Школы: Школа-лицей №74, Школа-лицей №72, Казахско-турецкий лицей «Нұр Орда»</p>
+                    <div class="slide-card__actions"><a class="slide-card__btn slide-card__btn--order" href="">записаться на показ</a><a class="slide-card__btn slide-card__btn--select" href="">выбрать квартиру</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide swiper-slide" slot="2">
+                  <div class="slide-card">
+                    <h1>Детская площадка</h1>
+                    <p>Двор ЖК «Аксиома» закрыт для автомобилей (кроме экстренных служб и во время переезда жителей). Родителям больше не нужно беспокоиться за безопасность своих детей, которые так любят побегать и поиграть в мяч во дворе.</p>
+                    <p>Маленьким жителям понравится играть на детской площадке ЖК «Аксиома». Качели и горки, песочница и карусель, канатные сетки, небольшой домик и даже целый замок с лестницами и спиральными спусками – скучно не будет ни малышам, ни детям постарше.</p>
+                    <p>Все конструкции выполнены из качественных материалов, соответствуют всем нормативным требованиям безопасности. Площадка расположена в самом центре двора и хорошо просматривается как с расставленных по периметру скамеек, так и из окон дома.</p>
+                    <ol> 
+                      <li>Безопасные конструкции</li>
+                      <li>Прогулки и игры без оглядки на проезжающие автомобили</li>
+                      <li>Отсутствие загазованности и шума</li>
+                      <li>Отсутствие стихийных парковок</li>
+                    </ol>
+                  </div>
+                </div>
+                <div class="swiper-slide swiper-slide" slot="2">
+                  <div class="slide-card">
+                    <h1>Спортивная площадка</h1>
+                    <p>Во дворе дома оборудована отличная площадка, где и взрослые и дети могут поиграть в любимые игры или устроить настоящие спортивные соревнования. Площадка огорожена высокой сеткой, снабжена баскетбольными кольцами и футбольными воротами. Специальное мягкое покрытие на площадке исключает возможность получения ссадин при падении.</p>
+                    <p>Здесь также установлены спортивные снаряды и тренажеры. Есть место и для тех, кто начинает утро с пробежки – огибающая двор по периметру дорожка поможет не только взбодриться и подготовить организм к дальнейшей тренировке, но и подарит великолепные виды на сквер в лучах восходящего солнца.</p>
+                  </div>
+                </div>
+              </about-slide-component>
+            </div>
+            <div class="about-swiper-container__swiper-slide swiper-slide">
+              <about-slide-component>
+                <div class="swiper-slide swiper-slide" slot="1">
+                  <div class="slide-card">
+                    <h1>В 15 минутах езды от центра левого берега </h1>
+                    <p>ЖК «Аксиома» расположен в стороне от шумных улиц на пересечении проспекта Р. Кошкарбаева и улицы Сарыколь. В то же время отсюда можно легко и быстро добраться и до административного центра Астаны, и до старого города.</p>
+                    <p>Непосредственная близость к «Аллее Тысячелетия» делает данный район крайне привлекательным. Кроме того, неподалеку от жилого комплекса находятся Новая площадь, Дворец Независимости, Пирамида, мечеть Хазрет Султан, Национальный исторический музей и Академия искусств «Шабыт», где можно погулять с семьей в выходные.</p>
+                    <div class="slide-card__actions"><a class="slide-card__btn slide-card__btn--order" href="">записаться на показ</a><a class="slide-card__btn slide-card__btn--select" href="">выбрать квартиру</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide swiper-slide" slot="2">
+                  <div class="slide-card">
+                    <h1>как добраться</h1>
+                    <div class="slide-card__map-wrapper">
+                      <div class="map-container" id="map1" data-center="51.125143, 71.492036"></div>
+                    </div>
+                    <div class="slide-card__actions"><a class="slide-card__btn slide-card__btn--order" href="">записаться на показ</a><a class="slide-card__btn slide-card__btn--select" href="">выбрать квартиру</a>
+                    </div>
+                  </div>
+                </div>
+              </about-slide-component>
+            </div>
+            <div class="about-swiper-container__swiper-slide swiper-slide">
+              <about-slide-component>
+                <div class="swiper-slide swiper-slide" slot="1">
+                  <div class="slide-card">
+                    <h1>Материалы строительства</h1>
+                    <p>Из чего сделан дом?</p>
+                    <p>- Наружные стены: кирпич, утеплитель</p>
+                    <p>Кирпич – долговечный и прочный материал, который в сочетании со специальным утеплителем защитит жильцов от суровых астанинских морозов зимой, а летом обеспечит в квартире прохладу. Благодаря входящим в его состав натуральным веществам кирпич признан одним из самых экологичных стройматериалов.</p>
+                    <p>- Стены: кирпич</p>
+                    <p>Стены, выполненные из кирпичной кладки толщиной 380-510 мм, прекрасно поглощают звук, ограждая квартиру от соседского шума.</p>
+                    <p>- Железобетонные перекрытия</p>
+                    <p>Плиты перекрытия из железобетона способны выдерживать огромные нагрузки, они надежны и долговечны. Такое перекрытие также обладает высокими тепло- и звукоизоляционными характеристиками.</p>
+                    <p>- Плоская кровля с внутренним водостоком</p>
+                    <p>Плоская кровля с внутренним водостоком обеспечивает эффективное отведение воды, а также исключает промерзание системы стока и образование сосулек на крыше дома зимой.</p>
+                    <div class="slide-card__actions"><a class="slide-card__btn slide-card__btn--order" href="">записаться на показ</a><a class="slide-card__btn slide-card__btn--select" href="">выбрать квартиру</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide swiper-slide" slot="2">
+                  <div class="slide-card">
+                    <h1>Материалы строительства</h1>
+                    <p>- Металлопластиковые окна с тройным остеклением</p>
+                    <p>Металлопластиковые окна практически не требуют специального ухода и устойчивы к любым атмосферным воздействиям. Тройное остекление позволяет сохранять максимум тепла, защищает от шума, попадания пыли и влаги.</p>
+                    <p>- Декоративные материалы отделки фасада</p>
+                    <p>Декоративная штукатурка, гранит и травертин придают зданию эстетичный вид, обладают отличными показателями влаго-, морозо- и теплоустойчивости, а также повышают звукоизоляционные и теплоизоляционные свойства дома.</p>
+                    <p>- Декоративные элементы: фибробетон и сталь</p>
+                    <p>Декоративные элементы из фибробетона и стали подчеркивают индивидуальный стиль жилого комплекса.</p>
+                    <div class="slide-card__actions"><a class="slide-card__btn slide-card__btn--order" href="">записаться на показ</a><a class="slide-card__btn slide-card__btn--select" href="">выбрать квартиру</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide swiper-slide" slot="3">
+                  <div class="slide-card">
+                    <h1>Фасад</h1>
+                    <p>Построенный в стиле конструктивизма ЖК «Аксиома» выглядит смело и масштабно. Внешний облик здания создан без излишних декоративных деталей, не несущих функциональной нагрузки. Простота форм и приятные глазу естественные оттенки как нельзя лучше передают основные характеристики жилого комплекса – комфорт, тепло и уют.</p>
+                    <div class="slide-card__actions"><a class="slide-card__btn slide-card__btn--order" href="">записаться на показ</a><a class="slide-card__btn slide-card__btn--select" href="">выбрать квартиру</a>
+                    </div>
+                  </div>
+                </div>
+              </about-slide-component>
+            </div>
+            <div class="about-swiper-container__swiper-slide swiper-slide">
+              <about-slide-component>
+                <div class="swiper-slide swiper-slide" slot="1">
+                  <div class="slide-card">
+                    <h1>генеральный план</h1>
+                    <div class="slide-card__cards-row clearfix">
+                      <div class="slide-card__card"><i class="icon-cart"></i><span>Торговые центры</span>
+                      </div>
+                      <div class="slide-card__card"><i class="icon-park"></i><span>Парковые зоны</span>
+                      </div>
+                      <div class="slide-card__card"><i class="icon-bank"></i><span>Отделения банков</span>
+                      </div>
+                      <div class="slide-card__card"><i class="icon-child"></i><span>Детские сады</span>
+                      </div>
+                      <div class="slide-card__card"><i class="icon-meal"></i><span>Кафе и рестораны</span>
+                      </div>
+                      <div class="slide-card__card"><i class="icon-post"></i><span>Почтовые отделения</span>
+                      </div>
+                      <div class="slide-card__card"><i class="icon-school"></i><span>Школы</span>
+                      </div>
+                      <div class="slide-card__card"><i class="icon-shop"></i><span>Продуктовые магазины</span>
+                      </div>
+                    </div>
+                    <div class="slide-card__actions"><a class="slide-card__btn slide-card__btn--order" href="">записаться на показ</a><a class="slide-card__btn slide-card__btn--select" href="">выбрать квартиру</a>
+                    </div>
+                  </div>
+                </div>
+              </about-slide-component>
+            </div>
+            <div class="about-swiper-container__swiper-slide swiper-slide">
+              <about-slide-component>
+                <div class="swiper-slide swiper-slide" slot="1">
+                  <div class="slide-card">
+                    <h1>партнеры</h1>
+                    <div class="slide-card__partners-row">
+                      <div class="slide-card__partner"><img class="slide-card__img" src="./static/img/cesna.png" alt="" role="presentation"/>
+                      </div>
+                      <div class="slide-card__partner"><img class="slide-card__img" src="./static/img/bau.png" alt="" role="presentation"/>
+                      </div>
+                      <div class="slide-card__partner"><img class="slide-card__img" src="./static/img/kvl.png" alt="" role="presentation"/>
+                      </div>
+                      <div class="slide-card__partner"><img class="slide-card__img" src="./static/img/yesil.png" alt="" role="presentation"/>
+                      </div>
+                    </div>
+                    <div class="slide-card__actions"><a class="slide-card__btn slide-card__btn--order" href="">записаться на показ</a><a class="slide-card__btn slide-card__btn--select" href="">выбрать квартиру</a>
+                    </div>
+                  </div>
+                </div>
+              </about-slide-component>
+            </div>
+          </div>
+        </div>
+      </div>
+    </script>
+    <template id="slide-template">
+      <div class="swiper-wrap">
+        <div class="horizontal-swiper swiper-container">
+          <div class="horizontal-swiper__swiper-wrapper swiper-wrapper" ref="slider">
+            <slot v-for="(value, i) in 10" :name="i"></slot>
+          </div>
+        </div><i class="swiper-wrap__icon swiper-wrap__icon--prev icon-arrow-left" v-show="ref &gt; 1"></i><i class="swiper-wrap__icon swiper-wrap__icon--next icon-arrow-right" v-show="ref &gt; 1 "></i>
+      </div>
+    </template>
+    <script type="text/x-template" id="header">
+      <div class="header-wrapper">
+        <div class="header clearfix"><a class="header__logo-wrapper" href="index.html"><img class="header__logo" src="./static/img/logo.png" alt="" role="presentation"/></a>
+          <div class="aside">
+            <div class="info">
+              <div class="info__part">
+                <div class="info__item"><i class="icon-pin"></i>г. Астана, ул. А 98 1
+                </div>
+                <div class="info__item"><i class="icon-email"></i>info@axiomadom.kz
+                </div>
+              </div>
+              <div class="info__part">
+                <div class="info__item"><i class="icon-time"></i>Пн - Пт: 9.00 - 19.00
+                </div>
+                <div class="info__item"><i class="icon-time"></i>Сб - Вс: 10.00 - 17.00
+                </div>
+              </div>
+              <div class="book clearfix">
+                <div class="book__tel"><i class="icon-call"></i>+7 71 72 450 800
+                </div><a class="book__callback">заказать звонок</a>
+              </div>
+            </div>
+            <div class="aside__nav-wrapper"><a class="aside__toggle" @click.prevent="toggleActive = !toggleActive" :class="{&quot;is-active&quot;: toggleActive}"><i class="icon-menu-toggle"></i></a>
+              <div class="aside__nav" :class="{&quot;is-active&quot;:toggleActive}"><a class="aside__link" href="about.html" v-if="getWidth &gt;= 1200 || toggleActive">О проекте</a><a class="aside__link is-active" href="plan.html" v-if="getWidth &gt;= 1200 || toggleActive">Выбрать квартиру</a><a class="aside__link" href="conditions.html" v-if="getWidth &gt;= 1200 || toggleActive">Условия приобретения </a><a class="aside__link" href="gallery.html" v-if="getWidth &gt;= 1200 || toggleActive">Галерея</a><a class="aside__link" href="contacts.html" v-if="getWidth &gt;= 1200 || toggleActive">Контакты</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </script>
+    <script type="text/x-template" id="footer-component">
+      <div class="footer clearfix container">
+        <div class="contacts">
+          <div class="contacts__contact"><span> <i class="icon-call"></i></span>+7 7172 450 600
+          </div>
+          <div class="contacts__contact"><span> <i class="icon-pin"></i></span>г. Астана, ул. А 98 1
+          </div>
+          <div class="contacts__contact"><span> <i class="icon-email"></i></span>info@axiomadom.kz
+          </div>
+        </div>
+        <div class="socials"><a class="socials__link" href="https://www.facebook.com/axioma.dom/?fref=ts" target="_blank"><i class="icon-f"></i></a><a class="socials__link" href="" target="_blank"><i class="icon-vk"></i></a><a class="socials__link" href="https://www.instagram.com/axioma.dom/" target="_blank"><i class="icon-insta"></i></a>
+        </div>
+        <div class="developers">
+          <div class="developers__developers"> <span>Сайт разработан</span><a href="" target="_blank"><img class="icon-reactor" src="./static/img/reactor.png"></a>
+          </div>
+        </div>
+      </div>
+    </script>
+    <script src="static/js/app.js"></script>
+  </body>
+</html>
