@@ -4,7 +4,7 @@
 header("Content-Type: text/html; charset=utf-8");
 
 //для myphotoua.ru
-$config['smtp_username'] = 'iliy4@ua.fm';//Смените на имя своего почтового ящика.
+$config['smtp_username'] = 'a.mustafina@globalexpert.kz';//Смените на имя своего почтового ящика.
 $config['smtp_password'] = '43431q';//Измените пароль
 $config['smtp_host']     = 'ssl://smtp.gmail.com';//ssl или tls - для яндекса !!! 'tls://smtp.yandex.ru';//'smtp.yandex.ru';//сервер для отправки почты(для наших клиентов менять не требуется)
 $config['smtp_port'] = '465';// Порт работы. Не меняйте, если не уверены.
