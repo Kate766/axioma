@@ -340,7 +340,7 @@ process.umask = function() { return 0; };
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(5)(
+var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(42),
   /* template */
@@ -387,11 +387,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _header = __webpack_require__(7);
+var _header = __webpack_require__(8);
 
 var _header2 = _interopRequireDefault(_header);
 
-var _footer = __webpack_require__(6);
+var _footer = __webpack_require__(7);
 
 var _footer2 = _interopRequireDefault(_footer);
 
@@ -482,7 +482,102 @@ new _vue2.default({
 
 /***/ }),
 
-/***/ 5:
+/***/ 56:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(6)(
+  /* script */
+  __webpack_require__(43),
+  /* template */
+  __webpack_require__(57),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "D:\\projects\\apps\\axe\\src\\js\\app\\components\\Plan.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Plan.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6b57d128", Component.options)
+  } else {
+    hotAPI.reload("data-v-6b57d128", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 57:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "plan-wrapper"
+  }, [_c('IMG', {
+    attrs: {
+      "src": "./static/img/main-plan.png"
+    }
+  }), _c('div', {
+    staticClass: "plan-container"
+  }, _vm._l((_vm.sectionImages), function(icon, index) {
+    return _c('div', {
+      staticClass: "plan-container__section-wrapper"
+    }, [_c('i', {
+      staticClass: "plan-container__section-image",
+      class: icon
+    }), _c('span', {
+      staticClass: "plan-container__section-data"
+    }, [_vm._v(_vm._s(index + 1))])])
+  }))], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-6b57d128", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 59:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    ref: "body",
+    staticClass: "wrapper wrapper--application"
+  }, [_c('header-component'), _c('div', {
+    staticClass: "main main"
+  }, [_c('router-view')], 1), _c('footer-component')], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-dccd93f2", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 6:
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -577,125 +672,6 @@ module.exports = function normalizeComponent (
   }
 }
 
-
-/***/ }),
-
-/***/ 56:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(5)(
-  /* script */
-  __webpack_require__(43),
-  /* template */
-  __webpack_require__(57),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "D:\\projects\\apps\\axe\\src\\js\\app\\components\\Plan.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Plan.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6b57d128", Component.options)
-  } else {
-    hotAPI.reload("data-v-6b57d128", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 57:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "plan-wrapper"
-  }, [_c('IMG', {
-    attrs: {
-      "src": "./static/img/main-plan.png"
-    }
-  }), _c('div', {
-    staticClass: "plan-container"
-  }, _vm._l((_vm.sectionImages), function(icon, index) {
-    return _c('div', {
-      staticClass: "plan-container__section-wrapper"
-    }, [_c('i', {
-      staticClass: "plan-container__section-image",
-      class: icon
-    }), _c('span', {
-      staticClass: "plan-container__section-data"
-    }, [_vm._v(_vm._s(index + 1))])])
-  }))], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-6b57d128", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 59:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    ref: "body",
-    staticClass: "wrapper wrapper--application"
-  }, [_c('header-component'), _c('div', {
-    staticClass: "main main"
-  }, [_c('router-view')], 1), _c('footer-component')], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-dccd93f2", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 6:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _vue = __webpack_require__(0);
-
-var _vue2 = _interopRequireDefault(_vue);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var FooterComponent = _vue2.default.component('footer-component', {
-  template: '#footer-component'
-});
-
-exports.default = FooterComponent;
 
 /***/ }),
 
@@ -3215,6 +3191,30 @@ if (inBrowser && window.Vue) {
 /***/ }),
 
 /***/ 7:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _vue = __webpack_require__(0);
+
+var _vue2 = _interopRequireDefault(_vue);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var FooterComponent = _vue2.default.component('footer-component', {
+  template: '#footer-component'
+});
+
+exports.default = FooterComponent;
+
+/***/ }),
+
+/***/ 8:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

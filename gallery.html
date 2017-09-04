@@ -51,7 +51,7 @@
         <h2 class="gallery-thumb__text">[[elementData.title]]
         </h2>
         <transition name="fade">
-          <gallery-slides-component v-show="elementData.slides" :slides="elementData.slides" :isVisible="showPopup" @close="showPopup = false"></gallery-slides-component>
+          <gallery-slides-component v-if="elementData.slides" :slides="elementData.slides" :isVisible="showPopup" @close="showPopup = false"></gallery-slides-component>
         </transition>
         <transition name="fade">
           <gallery-video-component v-if="elementData.video" :src="elementData.video" :isVisible="showPopup" @close="showPopup = false"></gallery-video-component>
@@ -61,9 +61,9 @@
     <script type="text/x-template" id="gallery-slides-component">
       <div class="overlay" v-if="isVisible">
         <slick class="gallery-swiper" ref="slick" :options="slickOptions"><img class="gallery-swiper__img" v-for="slide in slides" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" :src="slide" alt="" role="presentation"/>
-        </slick><i class="overlay__icon icon-gallery icon-gallery--left" @click="prev()" ref="prev"></i><i class="overlay__icon icon-gallery icon-gallery--right" @click="next()" ref="next"></i>
+        </slick>
         <div class="overlay__close" @click="emitClose()"><img src="./static/img/close.svg">
-        </div>
+        </div><i class="overlay__icon icon-gallery icon-gallery--left"></i><i class="overlay__icon icon-gallery icon-gallery--right"></i>
       </div>
     </script>
     <script type="text/x-template" id="gallery-video-component">
@@ -109,7 +109,7 @@
     <script type="text/x-template" id="footer-component">
       <div class="footer clearfix container">
         <div class="contacts">
-          <div class="contacts__contact"><span> <i class="icon-call"></i></span>+7 7172 450 600
+          <div class="contacts__contact"><span> <i class="icon-call"></i></span>+7 71 72 450 800
           </div>
           <div class="contacts__contact"><span> <i class="icon-pin"></i></span>г. Астана, ул. А 98 1
           </div>
@@ -124,6 +124,8 @@
         </div>
       </div>
     </script>
+    <script src="./static/js/jquery.min.js"></script>
+    <script src="./static/js/jquery.magnific-popup.js"></script>
     <script src="static/js/app.js"></script>
   </body>
 </html>

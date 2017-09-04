@@ -4,8 +4,8 @@
 header("Content-Type: text/html; charset=utf-8");
 
 //для myphotoua.ru
-$config['smtp_username'] = 'deekhalden@gmail.com';//Смените на имя своего почтового ящика.
-$config['smtp_password'] = '1988dik143431q';//Измените пароль
+$config['smtp_username'] = 'iliy4@ua.fm';//Смените на имя своего почтового ящика.
+$config['smtp_password'] = '43431q';//Измените пароль
 $config['smtp_host']     = 'ssl://smtp.gmail.com';//ssl или tls - для яндекса !!! 'tls://smtp.yandex.ru';//'smtp.yandex.ru';//сервер для отправки почты(для наших клиентов менять не требуется)
 $config['smtp_port'] = '465';// Порт работы. Не меняйте, если не уверены.
 $config['smtp_debug'] = true;//Если Вы хотите видеть сообщения ошибок, укажите true
@@ -265,6 +265,6 @@ $message .= '<p>E-mail: ' . $email . '</p>';
 $message .= '<p>Телефон: ' . $tel . '</p>';
 $message .= '<p>Сообщение: ' . $content . '</p>';
 
-smtpmail('deekhalden@gmail.com', 'AXIOMA', $message);
+smtpmail('iliy4@ua.fm', 'AXIOMA', $message);
 
 ?>
